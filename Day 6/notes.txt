@@ -1,0 +1,222 @@
+00:00:04
+hello everyone I'm Dr an naai is a python library for manipulating large multi-dimensional arrays which is fundamental to machine learning this module will cover all you need to know about NPI which allows you to start immediately by performing machine learning and artificial intelligence tasks let's dive into the napai programming tutorial right away hello everyone I'm Dr an now let's dive into NPI basics for machine learning you can import NPI using import NPI asmp uh asmin P just means that now you
+
+00:00:49
+can use the abbreviated MP to refer to the NPI module now let's move on to creating arrays in N High array manipulation is a very basic computation in machine learning you can create a rank one array which means that a array with a single row using the MP uh array function and in the argument you can provide a list for example a list containing three elements one two and three and when you print out the NY array uh it looks uh the same as a list but actually it is a n array not a uh original python list
+
+00:01:40
+you can create a rank two array means an array with a number of rows and number of columns uh by supplying in the MP array function a list of lists so here I have a list containing two elements the first element is a list containing three elements 1 2 and three the second element is also a list containing uh three elements four five and six so if you print that n array you will see that uh it is a rank two array with two rows and three columns by the very same token you can also create a rank three array now uh it
+
+00:02:26
+takes the shape of depths row and column so here I created a rank three array and as you can see it is a list of lists of lists if you print that n array you will see that this array has two depth this is the first depth this is the second depth so the depth uh has two dimensions and in the first depth it has two rows this is the first row and this is a second row and in the second depth is also o contains two rows the first row and the second row and finally it has uh three columns the First Column is uh 14
+
+00:03:11
+uh and second column is 25 and third column is 3 six uh for the first first depths and for the second depths it has three columns as well uh 71 81 and 912 you can in fact the dimensions of the Rays using its attribute uh shape uh for example uh for A1 which is uh rank one array if you take a look at the shape it has only one dimension uh three uh because uh it is a rank one array uh basically it just has a single row with three elements and uh for A2 which is a rank two array you will see that it has two
+
+00:04:00
+rows and three columns and for A3 which is a rank three array you will see that it has uh depth two depth and two rows and three columns we can take a look of the length of the array um denoting the number of elements in the first rank uh using the L uh function so L A1 one is going to give you uh three because it has three elements uh in its only Dimension the only row and for A2 is going to give you two uh because uh it has two rows and lens A3 is going to give you two as well because it has two
+
+00:04:51
+depth you can also take a look of the number of Dimensions uh or the number of ramp using the N dime denoting for n Dimensions attribute so A1 and D Dime is going to give you one because uh it's one run array uh where uh in dime A2 is going to give you two because the rank two array and in dime three uh A3 is going to give you three because the threedimensional uh rank three array you you can also use the uh size attribute to know the number of elements in an array so for A1 because it contains only three elements uh one two
+
+00:05:44
+and three so uh the size of the array is three for the r two array A2 the size is six because it has a total of six elements uh denoted by uh 1 2 3 4 5 six and then um the size for A3 R three array is 12 because it has 12 elements in Total 1 2 3 4 5 6 7 8 9 and 10 11 12 you can take a look of the data type uh of the array elements using D type denoting data type and uh for A1 uh array uh the data type is integer 64 uh because um know all the three elements are integers one two and three and um aign note regarding how the
+
+00:06:47
+integers are stored in NPI so uh integer 16 is the data type uh that can represent the integers from this negative number to this positive number it is the least precise um storage of the integers uh because any number is lower than the minimum or greater than the maximum uh cannot be stored in integer 16 uh data type so if you want to get more Precision more um uh digits you may use integer uh 32 which can store uh any integers within this range and the the most uh uh the integer uh 64 give you uh the most digits to store
+
+00:07:38
+your integers uh from this value to this value and by default um NPI use this integer 64 data type to store integers and you can also convert an array to a different data type for example convert uh the integer data type in A1 to float so remember float is the data type to store uh numbers with decimal points and uh if you use the S Type uh float is going to convert all the elements uh in the array from integer 64 uh to the default uh which is float 32 in n you can convert an array n array to a
+
+00:08:34
+original python list using the function to list so A1 to list is going to convert n array to a list one two and three often we create uh arrays to uh uh hold uh some results we are going to get later on from modeling so how to create an array as a placeholder well there are various ways one common way is to create an array containing all zeros so uh using the function zeros and in the argument you can provide the number the dimension uh of the array you are going to create so here I'm creating a r two array with
+
+00:09:25
+uh three rows and four columns and as you can see the result is a n array containing three rows and four columns uh filled with all zeros you can also create an array containing all ones so here um I'm using the ones function to create a rank three array uh with two depth three rows and four columns and you can also optionally specify the data type for the elements in the array so here I'm using uh the NPI integer 16 to store um those ones and as you can see uh the output is a nire array uh containing all zero or
+
+00:10:15
+containing all ones uh with the shape of 2 3 4 uh and with the data type of integer 16 you can create an array of evenly spaced values by specifying the step size using the a range uh function so a range ask for three arguments the first is the beginning value the second is the stopping value and the third is Step size um so a MP range 10 uh 25 and five so the starting value is going to be 10 and each time you add an incremental five so 10 15 20 but remember uh the python uh uh is last position exclusive so therefore instead
+
+00:11:09
+of going all the way to 25 it will stop at 20 but if you specify a different value for example 26 then uh the resulting array would be going from 10 15 20 to 25 you can also create an array of evenly spaced values by specifying the number of samples so for example here I'm using the Lan space standing for linear space uh by providing three arguments the first argument is zero denoting the starting point uh starting value and two is the ending value and then I want to get a total of nine uh numbers uh evenly spaced between uh zero
+
+00:11:58
+and two so therefore the resulting array containing n values which are evenly space from 0 to two you can return an array of numbers spaced evenly on a logarithmic scale uh the default base is 10 so for example I'm using the lock space uh function and in the function I provide the uh beginning value uh the end value and also um the step size so uh the resulting uh list of elements the first element is going to be 10 because the default base is 10 10 to power of 1 is 10 and uh the last value is going to be 10 re to^ 3 which
+
+00:12:50
+is a thousand um and also uh the numbers between uh and uh if you want to double check whe those numbers are truly evenly spaced on a log scale you can take the uh the logarithmic uh value of the elements in the list using the base 10 as as you can see that indeed uh those numbers uh generated by the lock space are evenly distributed on the lock scale so one 1.5 2 2.5 and three you can create create a array containing constant um and the argument uh and the function is four uh and in the argument
+
+00:13:42
+you first provide uh the shape of the array you try to create so here I'm creating array with four rows and five columns and also you want to provide the value of the constant you try to fill in the array so here I want to create an array containing all twos so the resulting array would be uh a rank two array with four rows and five columns containing uh the number two you can create I identity Matrix uh which is essentially uh uh only fill in the uh diagonal values with one uh and all the off diagonal values zero
+
+00:14:33
+uh using the function I and uh so here I'm creating a identity Matrix uh so identity Matrix is always going to be a square so basically with even number of rows and columns so therefore you only need to supply a single argument uh five uh and the resulting array is five rows and five columns and as you can see that only the diagonal values are uh filled with one and all the off diagonal values are filled with zero you can create an array uh of random values between zero and one following an uniform distribution by
+
+00:15:20
+using the MPR random random um so the first random is a sub module in NP and second random is the function that's going to create uh values from uh a uniform distribution between zero and one and in the argument you can specify the uh Dimensions uh or shape of the array so here I'm going to create an array with two with three rows and two columns and as you can see that uh in the resulting array uh it contains all the values that are randomly selected uh from a uniform distribution between Z
+
+00:16:07
+and one you can create an rate of values that follow a standard normal distribution basically a normal distribution with mean of zero and standard deviation one uh using uh still the random sub module in N Pi but using the function uh r n denotes uh uh a a standard uh normal distribution and you provide the shape of the array you try to create and as you can see the resulting array has three rows and two columns with values filled uh from uh random uh choosing values from a standard normal distribution you can also create an
+
+00:16:55
+array of random values that follow a normal distribution uh and normal distribution you just need to specify two additional arguments one for uh one is uh lock uh denoting the location basically the mean of that normal distribution and a second argument is called scale uh basically uh that's going to be the standard deviation of the normal distribution and then uh you provide the shape of the array you try to create uh using the function uh random normal and the resulting array as you can see have three rows and two columns
+
+00:17:38
+filled with randomly generated values from the normal distribution that you specify basically the normal distribution with a mean of one and the standard deviation of two you can also copy sort and reshape arrays to copy an array to a new memory uh here we first generated a two rank two array with uh two uh rows and three columns and you want to use the copy function to copy an array so some of you might be confused to know why we need to do the copy why not just uh assign the new array as the old array so if you do
+
+00:18:24
+this way um then it may have an intended consequences for example if you change some values in the original array ARR uh and uh because you assign the AR copy um uh as the AR so if the value changes AR and intentionally or maybe surprisingly to you uh the values in AR copy is also going to be changed although that may not be of your original intention so therefore to avoid that uh behavior um now you can make a copy so that this ARR copy is going to stored in a different digital space than the ARR
+
+00:19:10
+so that in this case if you change the values of the array ARR uh the values of AR copy will not be changed uh so as you can see the resulting AR copy uh for sure it take the same values as the original array AR you can sort an array using the function sort so here I create a rank one array with 2 3 1 4 five as the elements and if I sort by default is going to sort uh by the ascending value so that resulting array now uh is sorted based on the ascending order of the elements you can flatten a rank rank two
+
+00:19:56
+array to a rank one array uh using two options the first option uh is to use the flatten uh uh command so here I created a rank two array uh with uh three columns three rows and two columns so if I use the flatten command is going to convert this uh 2x3 array into a rank one array uh basically flattening out uh the two-dimensional Ray into just a one dimension uh so that the values become 10 84 29 11 in uh a rank one array the second option to flatten a rank two array is to use the Rabel uh function and as you can see
+
+00:20:49
+the resulting array is again rank one uh same as using the flatten command you can transpose array basically by reversing the rows and columns so that the rows become columns and column become rows in the new array using two approaches uh so here uh still using uh the uh array that we just created uh with three rows and two columns the first way is to use uh uh capital T denoting transpose as a attribute of the array so the reasoning array uh the resulting array look like this and previously we have the First Column 1049
+
+00:21:40
+now it becomes the first row and um the uh the first row 101 now become the First Column so basically uh you reverse the rows and columns in that array the second way to transpose an array is to use the function transpose and as you can see the resulting array is very same uh as you call the uh capital T attribute of the array you can reshape an array uh to three rows and four columns without changing the data elements using the reshape function uh so Rao function is very versatile for example here I created an
+
+00:22:29
+array uh with uh six rows and two columns and want to reshape that array into three rows and four columns and we use the function reshape and as you can see here the r has been reshaped from uh six rows and two columns to three rows and four columns here one KB add is you need to make sure that the reshape is possible uh because uh the reaped array has to take the same total number of elements as in original array otherwise the reshaping cannot be performed uh so for example the previous array has uh a total of 12 elements
+
+00:23:18
+because that's 6 * 2 a total of 12 and then the rehi array also has a total of 12 elements because that's 3 * 4 so that reshaping is possible and now let's talk about how you can add or remove elements from array uh so to append values to the end of array we use the append function which looks really similar as the original python butin uh append function uh by appending items to the end of a list so here uh we have an rank one array taking five values 1 2 3 4 4 five and I want to append a value minus 10 to
+
+00:24:03
+the end of the array we use the append function we provide the array we want to append on and we also provide the value we want to append to the array and the resulting array as you can see have minus 10 added to the very last position in the array you can also insert value into array very much like inserting values to a list in the OR buildin python command uh so the insert is going to do the job you provide the array and also you needs to provide the position where you want to insert an array and followed by the
+
+00:24:42
+value you want to pin to array and as you can see that the resulting array uh has a 100 um inserted into position one uh index one in the array and uh all the other elements of the array is going to be shift uh right to one position you can delete a value from the array uh using the delete function uh so here I want to delete uh the uh second row in the array uh so here you provide the array you want to delete elements and uh you also need to provide the position or the index know which row or column you want to delete
+
+00:25:30
+um and then you also need to Prim argument regarding whether you want to delete the row or delete the column so here I specify AIS equal zero so that it's going to delete uh the uh the the row with index one from the array uh so here the original array has three rows and two columns uh the first row uh with index zero is 108 the second row with index one is 42 and the third row uh with index two is 9 11 and so uh by deleting the uh position one row uh this row is going to be deleted so therefore
+
+00:26:15
+the resulting array would be uh with two rows and you can also delete uh the column position one by using the argument access equals one so here the resulting array uh uh has only one column uh because the the uh the column index One 8 to 11 has been deleted uh from the array and now let's talk about how you can combine or split array there are multiple ways you can do that uh so first uh if you want to add to arrays by r row uh you can use the concatenate function so here we created two arrays
+
+00:27:06
+uh both has two rows and three columns looking like this and then I want to concatenate these two arrays by row basically stacking the two uh arrays uh vertically uh we use the MP concatenate uh command to do that you need to provide in the temple the two arrays you want to uh uh stack to each other so the first array uh ar1 is going to stay uh in the the um the front and then the array two is going to stay at the bottom and you need to specify whether you want to concatenate by uh along the rows or along the columns because no we
+
+00:27:57
+are going to do the vertical concatenation the array one stay on top and the array two stay at bottom so therefore we are going to concatenate along the rows so that the AIS uh argument should be equal to zero and then as you see the resulting array uh is vertically stacked uh this is the first array on top this is the second array at the bottom you can also uh concatenate uh the second array and first array together by column so instead of doing the vertical stacking you can do the horizontal stacking you
+
+00:28:36
+have the array one at the left and array two at the right uh still using the concatenate uh function you provide this two arrays in the table the only change is that now X is equals one because you are going concatenate to arrays uh uh along the column so that axis should be equal to one as you can see the resulting array now has six uh rows uh has two rows and six column because there two arrays are stacking uh horizontally uh by each other uh so you can also stack two arrays vertically using the vstack uh uh
+
+00:29:22
+function Bas v stand for vertical so vertically stacking these two arrays and the are two at least two Alternatives you can use the first alternative is use the vstack function you just need to provide the two arrays in uh a tle uh and as you can see the resulting array is vertically stacked on top of each other and the second option is to use the r and the ncore uh and R stand for rows so this is the row stacking uh and then you provide this two arrays uh in the heart bracket uh and as you can see the
+
+00:30:05
+resulting uh array is vertically stacked the same as using the v stack uh function of course you can also stack the two arrays horizontally uh using the H stack h stand for horizontal horizontal stacking and then as you can see the resulting array is horizontally stacked so the second array is to the right right uh by the side of the first array and uh you can also use uh the CN score c stand for column so uh and it's going to achieve the very same uh result as using uh H stack function you can split an array
+
+00:30:49
+vertically into three sub arrays uh with equal size using the V split uh v stand for vertical so vertical split function and here we have an array uh taking uh six rows and two columns and I want to equally split this array vertically into three uh arrays so the first array would be uh this one the second array would be this one and the third array would be this one uh so here uh in the v spit function we provide the array we want to split and also so uh how many uh sub arrays we want to create as you can see
+
+00:31:34
+the resulting array is a list of three arrays we can also split an array horizontally uh into sub arrays know using the H split function so h stand for horizontal horizontal split so here uh first we create an array uh taking number from 0 to 15 uh using the a range function remember a range is going to start from zero uh but it's last number Exclusive so it's going to generate uh a total of 6 numbers from 0 to 15 and then I reshape that array into four rows and four columns so the corresponding uh
+
+00:32:20
+array look like this and then I want to do the horizontal split uh so basically the first first subarray is going to take the value 01 45 8 9 12 13 and the second array is going to take the shape of 2 3 6 7 10 11 and 14 15 as you can see uh here using the H split command uh I provide the array uh I want to split and also know how many sub arrays I want to create the resulting uh output is a list of two arrays uh that uh have the equal size that are splited from the original array and now let's talk about the
+
+00:33:12
+indexing uh slicing and subsetting uh of an array uh so here uh we first created an array uh is a rank one array taking 10 elements in modal from 0 to 9 and uh if I call the position two of that array uh remember uh in Python the position starting from zero so therefore uh this in this array position zero has a value of zero position one has a value of one position two has a value of two so therefore uh X2 is going to give you uh the the two uh as the output and uh now that's uh change the shape of the array uh from one one rank
+
+00:34:06
+one array to rank two array with two rows and five columns using uh uh by defining uh is shape uh and the resulting array look like this now we have two rows and and five columns in this new array and um uh to call the first row of this array we can use x0 uh so x0 means that no uh means that you are calling the first row of this array so therefore you are going to get uh the first row position zero and how about if you want to call a certain element uh in a row or column for example how you are going to call uh the
+
+00:34:53
+value five from this array well uh first you need to provide position for the row and then you provide position for the column so five is in the second row uh with row index one so therefore you should Supply one in the First Dimension and after comma uh because five is the first element in this in this row so therefore it has a column position of zero so you supply zero as the column uh index and then x y zero is going to give you uh the value of five you can assign new values to an array element uh by just know assigning
+
+00:35:43
+uh that value and then called position of that array for example uh uh previously you have uh X as an array taking those values and then you want to assign a hand Ted to the array element and at index one three so uh one is the second row and three uh is at position three so that if you count here this is the second row and position three are correspond to the value of eight right because that position zero position one position two and position three and you want to replace an eight with 100 you
+
+00:36:26
+just need to specify to assign a hander to that uh position in the array X and when you print the result as you can see that instead of having eight in the original array the corresponding value has been replaced by 100 you can slice uh the array uh by returning multiple uh elements for example here uh uh I want to have have know all the rows uh but only uh position two column uh so here um in this uh array uh you call all the rows so basically both Row one and and row two uh but you only want uh the column
+
+00:37:23
+position two so uh 05 is the col column position zero 1 six is the column position one and 27 is the column position two so therefore uh the a uh uh all rows and two is going to give you uh an array of 27 which is a slice from the original array x uh and in this example you want to get uh only the second row uh row position one so therefore your going to get this row and you are going to get columns from 2 to five uh remember uh python is last position exclusive so instead of giving you uh the column from 2 to 5
+
+00:38:12
+it's going to give you column from two to four instead so uh this is column uh position two column position three uh and column position four so therefore you get seven uh ahead and N uh in the slice of the array you can return an array with span values by testing uh cell by cell whether each element in the array satisfy the condition or not so here um I set a condition uh X less than or equal to 5 what it's going to do is going to test uh element by element in this Ray whether this condition is uh
+
+00:38:57
+held if this a held uh a true is going to be the output otherwise is going to be false so uh in this example um because all the numbers in the first row are less than five the condition is satisfied so it has an output of two uh five is also less than or equal to five uh so the first element in the second row also is true uh but then 6 7 109 they all greater than five so the condition is not held uh so that the resulting uh cells are false you can use the Boolean uh testing as a way to mask an array for example
+
+00:39:44
+here I created rank one array taking those values and then uh I test for each element in y whether it satisfi the condition of y That's not equal to three and then I use y in the hard bracket I specify the the the U uh the condition and then the resulting array uh would be the only the uh the array containing the elements that satisfy the condition of less than or equal to three so therefore uh in this case uh uh because 1 2 3 and minus 10 they are all satisfying the condition of that's not
+
+00:40:25
+equal to three whereas 4 5 six seven uh do not satisfy the condition so therefore only uh 1 2 3 and minus 10 are included in uh the uh in this array and now let's talk about scaler math so scaler math is just a mass operations working on a specific uh cell a specific element element by element uh in an array uh here we create an array uh taking uh six values from 0 to five and I reshape it to two rows and three columns uh the resulting array look like this and then uh we can add or subtract
+
+00:41:12
+or multiply or divide out taking the power uh for each element in this array uh using the uh scaler Mass operations for example uh the non Pi add uh providing array and also one means that I'm going to add one to each array elements so that no 0 + 1 is 1 No 1 + 1 is 2 2 + 1 is 3 3 + 1 is 4 4 + 1 is 5 5 + 1 is 6 so the resulting array would be every single element plus one in the resulting array you can also do scaler uh multiplication using the multiply function uh so here I'm going to multiply each element of the array by
+
+00:42:00
+three uh and you can also do subtraction and division uh for each element in the array you can also power uh the each element in the array by a certain number so here five uh so the resulting array would be no zero R to power five is going to be zero one rest power 5 is going to be one two re power 5 is going to be uh 32 and so on so forth we can do a lot more uh scalar Mass operations for example here uh I can take the square root of each element in Array I can calculate the sign function of each element in the way we
+
+00:42:46
+can do the natural uh log uh for each element we can calculate the absolute value using the ABS uh we can also r uh each element in the array for example there are actually three ways that you can run uh a uh floating number into a integer uh the first way to run the element is called cell uh stand for seting so basically for example if you have an element 2.5 in Array is going to be round it up to n which is the closest integer uh uh higher than the uh or origal uh float number and a second way you can run the
+
+00:43:32
+nearest integer is use floor uh for example uh if you have an element 12.8 in an array uh you use the floor and you are going to get 12 which is the Clos integer below uh the floating Point number and you can also use uh round uh function and Rong is going to run to the nearest integer so if you have 4.5 is going to run to four to five whereas if you have 4.3 is going to run to four you can also uh take exponentiation uh of an using the EXP command uh so uh those operations are very self-explanatory so feel free to
+
+00:44:18
+test them out besides doing scaler Mass uh NPI is also acellent to do Vector Mass um so basically Vector Mass would be uh the math operations that work on two or more arrays at the same time uh so for example here uh we do the vector Mass operations concerning two arrays we first created the first array uh again no uh it takes the values from zero to five and we reshape is to two rows and three columns uh looking like this and we create a second array uh uh with the same shape at the first array two rows
+
+00:45:03
+and three columns but all filled with number two so it look like this uh and then we can do the vector Mass operations no on these two arrays so first uh we can add element by elements of these two arrays together uh so uh using the add function so here uh we are going to add the first element in the first zero to the first element in the second array two so 0 + 2 is going to be two uh and the second element in the first array is one the second element in the second array is two so 1 + 2 is three uh so so on so forth so here you
+
+00:45:43
+can do the vector uh Mass operation on these two arrays because the uh the two arrays take exactly the same shape the same number of rows and columns and you can also do element y subtraction for this two arrays using subtract command or multiply two uh elements in the in the two arrays together using multiply or do the division and know taking the power of the array so by taking the power array uh you are going to have uh uh so the the the first array is going to serve as the base and the secondary is going to
+
+00:46:22
+serve as the power element by element uh so uh for example um no uh the zero uh is going to reach to power of two and the resulting value is zero and one uh uh sorry zero and then one is going to be ra to power of two so the resulting element is one and two uh is going to ra to power two so get four uh so on so forth and finally you you can also test uh whether two arrays uh are the same element by element using the array equal uh command and uh so what is doing is going to test no element by element at the
+
+00:47:11
+same position among the two arrays whether uh the the array uh are the same if though all the elements uh are the same between the two arrays is going to return true if any of the elements between the two arrays in in the same position uh uh is false and then it's going to return false so here uh we test the whether these two arrays equal to each other and as you can see that no uh the only uh uh element in these two arrays at the same position that are equal to each other is uh two uh whereas all the other elements uh are
+
+00:47:52
+not equal to each other so therefore uh this uh the the def function returned uh false uh because these two arrays are not identical you can also do a DOT product uh so if you're are not familiar with the dot product you can take a look of the Wikipedia page that know tells you specifically what is a product dot product so basically a DOT product is just a multiplication of two arrays so to do a DOT product you need to make sure that the shape as two arrays conform each each other that allow you
+
+00:48:31
+to do the dot product otherwise um the python is going to issue an error message telling you that the shape of his two arrays do not conform each other so that that product cannot be calculated so uh what do I mean by uh the two arrays uh have the shape conformed to each other so the dot product required that uh the uh uh the the number of uh columns in the first array uh must be equal to the number of rows in the second array uh for the dot product uh the uh the order matters so uh so the A1 uh is say A1 is the first
+
+00:49:17
+array and A2 is the second array so A1 * A2 basically the dot product of A1 and A2 is not the same as the dot product of a A2 uh and A1 uh so um keep that in mind uh that that product uh no is order sensitive so here uh no A1 take the shape uh of 2 three so it has two rows and three columns and and uh array A2 take the shape of 32 as three rows and two columns uh be because the A1 has three columns and A2 has three rows so therefore uh their shapes conform to the requirement of the dot product so that
+
+00:50:03
+the dot product can be calculated so here I showcase know how exactly know what the number come from and how the dot product was calculated um and to calculate the dot product for these two arrays uh you just need to use the dot faction and then you provide uh the arrays make sure that know the arrays are uh provided uh no uh uh based on the uh the required order so here now as you see the dot product is uh resulting an array with two rows and two columns U that is because the two rows come from the first array and the
+
+00:50:47
+two column come from the second array okay and uh finally um I want to uh clarify a a very confusing concept which is AIS that often confuse uh uh python uh beginners so uh in Python uh the AIS equal zero means that we are going along the rows along the rows means we are going to know do some calculation vertically whereas x equals 1 means that we are going along The Columns basically doing some operations horizontally so let's take a look uh take an example so here uh we have an array uh taking two rows and three
+
+00:51:40
+columns uh taking values of 0 one two in the first row and 3 four five in the second row and now first let's calculate the overall mean of all the elements in the array using the MP mean command uh as you can see uh the resulting uh output is just a single scalar a single number 2.5 2.5 is the average or mean of all three all uh six elements in this array but how about if I want to calculate uh the mean for each column so presumably you would think that I should use the argument uh AIS equals 1 but actually that is not true
+
+00:52:27
+remember that uh XIs equal zero means you are going to go along the rows uh and because the goal uh for is to calculate the mean for each column uh so a mean for column one a mean for column two a mean for column three and mean for column four and therefore actually when you calculate the mean for column one for example you are go along the road you're going to go vertically for all the elements in the First Column um and similarly if you want to calculate the mean for column two you're also going to
+
+00:53:03
+go vertically along the rows so therefore if you want to calculate the mean for each column you should specify AIS equal zero rather than a equals to one you can confirm that uh uh by using the MP mean providing the the array and also X is equal zero and as you can see the output is a rank one array with three elements so 1.5 is the mean of zero and three the First Column 2.5 is the mean of the second column 1 4 and 3.5 is the mean of the third column 2 and five uh by the same token if you want to
+
+00:53:45
+calculate the mean for uh each row you should go along the column so basically in this case for if you want to calculate the mean for Row one you go along the F the the the the the column basically go horizontally so that axis should be equal to to zero uh so so the the axis should be equal to one instead uh so in this case for example you use MP mean array and XIs equals one the resulting array is one rank one array with two elements so one is the mean of the first row uh one uh 0 1 and 2 and four is the mean of the second row
+
+00:54:28
+3 4 five uh so therefore if you want to calculate the mean for each column you should specify AIS equal zero because you are going to go vertically whereas if you want to return return the mean for each row XIs equal to one because you are going horizontally and uh finally uh you can calculate the cumulative uh sum uh using the comp sum function again if you want to calculate the cumulative sum for each row you should specify XIs equals 1 if you want to calculate theum sum for uh each column you should specify axis
+
+00:55:08
+equal zero uh for example here um this is the original array and you want to calculate uh uh the cumul sum for each row uh so the cultive sum is calculated this way so zero the cumul sum of zero because Z is is the first element so it's still zero uh and then one uh you are going to add the first element zero and also one together uh so it's one and uh for the third element in the ctive sum uh is going to be 1 + 0 + 1 + 2 so get three so this is how you calculate a ctive sum and hopefully by now you
+
+00:55:52
+should have a fairly good understanding of what x is equals one and what X is equal z mean and now let's take a look of how you can calculate the correlation coefficient Matrix of two arrays remind you that the Matrix take the following form uh in the diagonal you have uh the correlation coefficient uh of the array base itself and on the off diagonal you have the correlation coefficient uh between uh these two arrays so here we created two arrays uh both are rank one array uh with a total of 10
+
+00:56:34
+elements the first array uh is um take the elements from 12 to to 50 uh evenly spaced and the second array take randomly selected values from a uniform distribution uh between zero and one and you use the uh c r uh CF command stand for correlation coefficient and you provide these two array name as the arguments and now uh the resulting array is the correlation coefficient of the two arrays that brings the end to today's module on NPI basics for machine learning thank you for your attention
+
+00:57:19
+and I'll see you next time
+
