@@ -24,3 +24,6 @@ sorted_words = sorted(words, key=lambda x:len(x))
 print(list(sorted_words))
 
 
+li = [lambda arg=x: arg * 10 for x in range(1, 5)]
+for i in li:
+    print(i())
