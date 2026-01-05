@@ -1,0 +1,11 @@
+git init = initialize empty repo
+git add . = add all the file consist in folder
+git commit -m "" = commit the changes
+git branch branch name = can change branch
+git remote origin "url of repo"
+git push origin branchname = push all the changes to repo
+git log = give info of all push and pull 
+git status = status for stagged and unstagged file by git
+git pull = umpush latest push
+git merge = merge to different branch
+git checkout = change the branch
