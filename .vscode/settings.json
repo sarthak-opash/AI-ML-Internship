@@ -1,3 +1,12 @@
 {
-    "notebook.cellFocusIndicator": "border"
+    "notebook.cellFocusIndicator": "border",
+    "python.testing.unittestArgs": [
+        "-v",
+        "-s",
+        "./EDA + Feature Engineering",
+        "-p",
+        "*test.py"
+    ],
+    "python.testing.pytestEnabled": false,
+    "python.testing.unittestEnabled": true
 }
