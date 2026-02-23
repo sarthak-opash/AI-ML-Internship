@@ -1,6 +1,7 @@
 # Virtual environments
 .tf_env/
 tf_env/
+tf_env_cnn/
 venv/
 env/
 .venv/
