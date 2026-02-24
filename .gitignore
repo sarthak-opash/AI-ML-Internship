@@ -3,6 +3,7 @@
 tf_env/
 tf_env_cnn/
 venv/
+tf_env_py310/
 env/
 .venv/
 
@@ -16,3 +17,6 @@ __pycache__/
 # OS files
 .DS_Store
 Thumbs.db
+
+*.tar.gz
+datasets/
