@@ -100,6 +100,7 @@ if menu == "Take Attendance":
                 if best_dist < 0.5:
                     mark_attendance(emp_id, emp_name)
                     label = f"{emp_name} ({emp_id})"
+                    st.success(f"Attendance Marked for {emp_name} ({emp_id})")
                     color = (0, 255, 0)
                 else:
                     label = "Not Employee"
@@ -112,15 +113,13 @@ if menu == "Take Attendance":
             FRAME_WINDOW.image(cv2.cvtColor(frame, cv2.COLOR_BGR2RGB))
 
         camera.release()
-
-
-
+ 
 elif menu == "View Attendance Records":
     st.subheader("Attendance Records")
     if os.path.exists('Attendence/attendance.csv'):
-        df = pd.read_csv('Attendence/attendance.csv')
+        df = pd.read_csv('Attendence/attendance.csv', engine='python', on_bad_lines='skip')
         st.dataframe(df, use_container_width=True)
-        # Download button
+        
         with open('Attendence/attendance.csv', "rb") as file:
             st.download_button(
                 label="⬇ Download Attendance CSV",
@@ -128,9 +127,10 @@ elif menu == "View Attendance Records":
                 file_name="attendance.csv",
                 mime="text/csv"
             )
+            
         st.markdown("### Attendance Summary")
         total_entries = len(df)
-        unique_employees = df["Emp_ID"].nunique()
+        unique_employees = df["Emp_ID"].nunique() if "Emp_ID" in df.columns else 0
 
         col1, col2 = st.columns(2)
         col1.metric("Total Entries", total_entries)

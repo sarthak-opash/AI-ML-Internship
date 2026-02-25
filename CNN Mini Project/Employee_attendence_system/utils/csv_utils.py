@@ -6,12 +6,20 @@ CSV_FILE = "Attendence/attendance.csv"
 
 
 def mark_attendance(emp_id, emp_name):
-    today = datetime.now().strftime("%Y-%m-%d")
-    time_now = datetime.now().strftime("%H:%M:%S")
+    today = datetime.now().strftime("%d-%m-%y")
+    time_now_in = datetime.now().strftime("%H:%M:%S")
+    time_now_out = datetime.now().strftime("%H:%M:%S")
 
     file_exists = os.path.isfile(CSV_FILE)
 
     # Check duplicate for same day
+    # if file_exists:
+    #     with open(CSV_FILE, "r") as f:
+    #         reader = csv.reader(f)
+    #         if emp_id is_exi:
+    #             writer.writerow([emp_id, emp_name, today, time_now_out])
+    #             return
+
     if file_exists:
         with open(CSV_FILE, "r") as f:
             reader = csv.reader(f)
@@ -24,8 +32,8 @@ def mark_attendance(emp_id, emp_name):
         writer = csv.writer(f)
 
         if not file_exists:
-            writer.writerow(["Emp_ID", "Name", "Date", "Time"])
+            writer.writerow(["Emp_ID", "Name", "Date", "In", "Out"])
 
-        writer.writerow([emp_id, emp_name, today, time_now])
+        writer.writerow([emp_id, emp_name, today, time_now_in, "-"])
 
     print(f"Attendance Marked for {emp_name}")

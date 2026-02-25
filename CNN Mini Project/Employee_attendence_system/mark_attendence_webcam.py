@@ -8,7 +8,7 @@ from utils.csv_utils import mark_attendance
 with open("embeddings/face_embeddings.pkl", "rb") as f:
     known_faces = pickle.load(f)
 
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture('http://127.0.0.1')
 
 while True:
     ret, frame = cap.read()
