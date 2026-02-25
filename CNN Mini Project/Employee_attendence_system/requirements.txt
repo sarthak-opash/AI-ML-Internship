@@ -8,4 +8,3 @@ keras-facenet
 mtcnn
 tensorflow
 keras
-datetime
