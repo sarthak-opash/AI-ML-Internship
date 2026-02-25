@@ -1,0 +1,11 @@
+pandas
+streamlit
+pillow
+numpy
+opencv-python
+scikit-learn
+keras-facenet
+mtcnn
+tensorflow
+keras
+datetime

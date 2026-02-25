@@ -1,15 +1,11 @@
 import cv2
 import pickle
-from tkinter import Tk, filedialog
 from sklearn.metrics.pairwise import cosine_distances
 from utils.embedding_utils import get_face_embedding
 from utils.csv_utils import mark_attendance
 
 with open("embeddings/face_embeddings.pkl", "rb") as f:
     known_faces = pickle.load(f)
-
-root = Tk()
-root.withdraw()
 
 file_path = filedialog.askopenfilename()
 
