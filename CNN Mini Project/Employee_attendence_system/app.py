@@ -50,9 +50,8 @@ if menu == "Take Attendance":
             file_bytes = np.asarray(bytearray(uploaded_file.read()), dtype=np.uint8)
             image = cv2.imdecode(file_bytes, 1)
 
-            st.image(cv2.cvtColor(image, cv2.COLOR_BGR2RGB),
-                     caption="Uploaded Image",
-                     width='stretch')
+
+            st.image(cv2.cvtColor(image, cv2.COLOR_BGR2RGB), caption="Uploaded Image", width=300, use_column_width=False)
 
             embedding, box = get_face_embedding(image)
 
@@ -122,7 +121,7 @@ elif menu == "View Attendance Records":
         
         with open('Attendence/attendance.csv', "rb") as file:
             st.download_button(
-                label="⬇ Download Attendance CSV",
+                label="Download Attendance CSV",
                 data=file,
                 file_name="attendance.csv",
                 mime="text/csv"
