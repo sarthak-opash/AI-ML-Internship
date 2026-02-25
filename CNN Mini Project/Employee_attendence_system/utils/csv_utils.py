@@ -1,3 +1,4 @@
+
 import csv
 import os
 from datetime import datetime
@@ -7,33 +8,44 @@ CSV_FILE = "Attendence/attendance.csv"
 
 def mark_attendance(emp_id, emp_name):
     today = datetime.now().strftime("%d-%m-%y")
-    time_now_in = datetime.now().strftime("%H:%M:%S")
-    time_now_out = datetime.now().strftime("%H:%M:%S")
+    time_now = datetime.now().strftime("%H:%M:%S")
+    os.makedirs(os.path.dirname(CSV_FILE), exist_ok=True)
 
-    file_exists = os.path.isfile(CSV_FILE)
+    rows = []
+    header = ["Emp_ID", "Name", "Date", "In", "Out", "Total Time"]
+    found = False
 
-    # Check duplicate for same day
-    # if file_exists:
-    #     with open(CSV_FILE, "r") as f:
-    #         reader = csv.reader(f)
-    #         if emp_id is_exi:
-    #             writer.writerow([emp_id, emp_name, today, time_now_out])
-    #             return
+    if os.path.isfile(CSV_FILE):
+        with open(CSV_FILE, "r", newline="") as f:
+            reader = list(csv.reader(f))
+            if reader:
+                rows = reader[1:]
 
-    if file_exists:
-        with open(CSV_FILE, "r") as f:
-            reader = csv.reader(f)
-            for row in reader:
-                if len(row) >= 3 and str(row[0]) == str(emp_id) and row[2] == today:
-                    print(f"Attendance already marked for {emp_name} today.")
-                    return
+    for row in rows:
+        if len(row) >= 3 and str(row[0]) == str(emp_id) and row[2] == today:
+            found = True
+            if row[4] == "-":
+                row[4] = time_now
+                row[5] = calculate_total_time(row[3], row[4])
+            break
 
-    with open(CSV_FILE, "a", newline="") as f:
+    if not found:
+        rows.append([emp_id, emp_name, today, time_now, "-", "-"])
+
+    with open(CSV_FILE, "w", newline="") as f:
         writer = csv.writer(f)
-
-        if not file_exists:
-            writer.writerow(["Emp_ID", "Name", "Date", "In", "Out"])
-
-        writer.writerow([emp_id, emp_name, today, time_now_in, "-"])
+        writer.writerow(header)
+        writer.writerows(rows)
 
     print(f"Attendance Marked for {emp_name}")
+
+
+def calculate_total_time(start_time, end_time):
+    if end_time == "-":
+        return "-"
+
+    fmt = "%H:%M:%S"
+    t1 = datetime.strptime(start_time, fmt)
+    t2 = datetime.strptime(end_time, fmt)
+    diff = t2 - t1
+    return str(diff)
