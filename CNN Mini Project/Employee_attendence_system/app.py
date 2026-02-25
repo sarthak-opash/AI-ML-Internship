@@ -15,7 +15,14 @@ st.title("Employee Attendance System")
 
 @st.cache_resource
 def load_embeddings():
-    with open("embeddings/face_embeddings.pkl", "rb") as f:
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    embeddings_path = os.path.join(BASE_DIR, "embeddings", "face_embeddings.pkl")
+
+    if not os.path.exists(embeddings_path):
+        st.error("Embeddings file not found! Please generate embeddings first.")
+        return {}
+
+    with open(embeddings_path, "rb") as f:
         return pickle.load(f)
 
 known_faces = load_embeddings()
