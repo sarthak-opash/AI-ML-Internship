@@ -1,7 +1,6 @@
-from collections import defaultdict, deque
-
 import cv2  
 from ultralytics import YOLO
+from collections import defaultdict, deque
 
 model = YOLO("yolov8n.pt")
 cap = cv2.VideoCapture("walking_master.mp4")
@@ -38,6 +37,7 @@ while True:
             cv2.circle(annot, (c1, c2), 5, (0, 255, 0), -1)
             for i in range(1, len(trail[sid])):
                 cv2.line(annot, trail[sid][i-1], trail[sid][i], (0, 255, 0), 2)
+                
     cv2.imshow("People Walking Detection", annot)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
