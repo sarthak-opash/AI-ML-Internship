@@ -20,11 +20,7 @@ def mark_attendance(emp_id, emp_name):
     os.makedirs(os.path.dirname(CSV_FILE), exist_ok=True)
 
     header = ["Emp_ID", "Name", "Date", "In", "Out", "Total Time"]
-<<<<<<< HEAD:CNN_Core/Employee_attendence_system/utils/csv_utils.py
-    rows = [] 
-=======
     rows = []
->>>>>>> refs/remotes/origin/main:CNN Mini Project/Employee_attendence_system/utils/csv_utils.py
     
     if os.path.isfile(CSV_FILE):
         with open(CSV_FILE, "r", newline="") as f:
