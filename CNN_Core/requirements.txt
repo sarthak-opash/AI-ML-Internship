@@ -1,0 +1,9 @@
+streamlit
+opencv-python-headless
+mtcnn
+keras-facenet
+tensorflow-cpu
+scikit-learn
+numpy
+pandas
+Pillow
