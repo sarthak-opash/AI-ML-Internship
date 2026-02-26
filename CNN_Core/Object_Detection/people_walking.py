@@ -41,5 +41,6 @@ while True:
     cv2.imshow("People Walking Detection", annot)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
+
 cap.release()
 cv2.destroyAllWindows()
