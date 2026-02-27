@@ -8,7 +8,10 @@ import warnings
 warnings.filterwarnings("ignore", category=UserWarning, message="'pin_memory' argument is set as true but no accelerator is found")
 
 model = YOLO("best.pt")
-reader =  easyocr.Reader(['en'], gpu = False)
+# enable GPU for OCR when available (speeds up recognition if CUDA is present)
+import torch
+use_gpu = torch.cuda.is_available()
+reader = easyocr.Reader(['en'], gpu=use_gpu)
 
 plate_pattern = re.compile(r"^[A-Z]{2}[0-9]{2}[A-Z]{3}$")
 
@@ -20,7 +23,7 @@ def correct_plate_platform(ocr_text):
     
     ocr_text = ocr_text.upper().replace(" ", "")
     if len(ocr_text) > 7:
-        return False
+        return ""  # too long, invalid plate
     
     corrected = []
     for i, ch in enumerate(ocr_text):
@@ -84,10 +87,13 @@ input_video = "vehicle_video.mp4"
 output_video = "output_with_licence.mp4"
 
 cap = cv2.VideoCapture(input_video)
+cap.set(cv2.CAP_PROP_BUFFERSIZE, 1)
 fourcc = cv2.VideoWriter.fourcc(*"mp4v")
 out = cv2.VideoWriter(output_video, fourcc, cap.get(cv2.CAP_PROP_FPS), (int(cap.get(3)), int(cap.get(4))))
-        
+
 CONF_THRESH = 0.3
+FRAME_SKIP = 2  # perform OCR every N frames to save time
+frame_count = 0
 
 # Operating frame by frame
 
@@ -95,41 +101,55 @@ while cap.isOpened():
     ret, frame = cap.read()
     if not ret:
         break
-    
-    results = model(frame)
-    
+    frame_count += 1
+
+    h, w = frame.shape[:2]
+    target_size = 640
+    scale = 1.0
+    if max(h, w) > target_size:
+        scale = target_size / max(h, w)
+        small = cv2.resize(frame, (int(w * scale), int(h * scale)))
+    else:
+        small = frame
+
+    results = model(small)
+
     for r in results:
         boxes = r.boxes
         for box in boxes:
             conf = float(box.conf.cpu().numpy().item())
             if conf < CONF_THRESH:
                 continue
-            x1, x2, y1, y2 = map(int, box.xyxy[0].cpu().numpy())
+            # xyxy format is [x1, y1, x2, y2]
+            coords = box.xyxy[0].cpu().numpy()
+            x1, y1, x2, y2 = map(int, coords / scale)
             plate_crop = frame[y1:y2, x1:x2]
-            
-            #ocr with correction
-            text = recognize_plate(plate_crop)
+
+            # ocr with correction (skip some frames to reduce load)
+            text = ""
+            if frame_count % FRAME_SKIP == 0:
+                text = recognize_plate(plate_crop)
             box_id = get_box_id(x1, y1, x2, y2)
             stable_text = get_stable_plate(box_id, text)
-            
-            # draw
-            cv2.rectangle(frame, (x1, y1), (x2, y2), (0,255,0), 3)
-            
-            # overlay zoomed in-place
+
+            # draw bounding box on original frame
+            cv2.rectangle(frame, (x1, y1), (x2, y2), (0, 255, 0), 3)
+
+            # overlay zoomed-in plate and text
             if plate_crop.size > 0:
                 overlay_h, overlay_w = 150, 400
                 plate_resized = cv2.resize(plate_crop, (overlay_w, overlay_h))
-                
+
                 oy1 = max(0, y1 - overlay_h - 40)
                 ox1 = x1
                 oy2, ox2 = oy1 + overlay_h, ox1 + overlay_w
-                
+
                 if oy2 <= frame.shape[0] and ox2 <= frame.shape[1]:
-                        frame[oy1:oy2, ox1:ox2] = plate_resized
+                    frame[oy1:oy2, ox1:ox2] = plate_resized
                 if stable_text:
-                    cv2.putText(frame, stable_text, (ox1, oy1 - 20), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (0,255,0), 6)
-                    cv2.putText(frame, stable_text, (ox1, oy1 - 20), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (255,255,0), 3)
-                        
+                    cv2.putText(frame, stable_text, (ox1, oy1 - 20), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (0, 200, 0), 9)
+                    cv2.putText(frame, stable_text, (ox1, oy1 - 20), cv2.FONT_HERSHEY_SIMPLEX, 2, (255, 255, 255), 3)
+
     out.write(frame)
     try:
         cv2.imshow("License Plate Recognition", frame)  
