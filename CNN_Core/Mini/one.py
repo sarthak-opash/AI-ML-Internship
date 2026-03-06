@@ -1,1 +1,1 @@
-print(/"Sarthak")
+print("Sarthak")
