@@ -29,6 +29,7 @@ def extract_aadhar_details(image):
     dob = dob_match.group() if dob_match else None
 
 
+    gender = None
     name = None
 
     for i, text in enumerate(text_list):
@@ -41,7 +42,9 @@ def extract_aadhar_details(image):
         if re.match(r'^[A-Za-z ]{3,}$', text):
             if dob and i < len(text_list):
                 name = text
-                break
+                
+            if not dob and i > len(text_list):
+                gender = text
 
             if not dob:
                 name = text
@@ -50,7 +53,8 @@ def extract_aadhar_details(image):
     data = {
         "name": name,
         "date_of_birth": dob,
-        "aadhaar_number": aadhar_number
+        "aadhaar_number": aadhar_number,
+        "gender": gender
     }
     
     return json.dumps(data, indent=4)
