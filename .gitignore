@@ -18,5 +18,33 @@ __pycache__/
 .DS_Store
 Thumbs.db
 
+*.bin.gz
+*.bin
 *.tar.gz
 datasets/
+
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+*.png
+*.jpg
+*.jpeg
+=======
+=======
+>>>>>>> 39d3d31f44c8557e17d4f581488487c841a8142d
+=======
+>>>>>>> 39d3d31f44c8557e17d4f581488487c841a8142d
+# images
+.jpg
+.png
+
+<<<<<<< HEAD
+<<<<<<< HEAD
+*bin.gz
+>>>>>>> 39d3d31f44c8557e17d4f581488487c841a8142d
+=======
+*bin.gz
+>>>>>>> 39d3d31f44c8557e17d4f581488487c841a8142d
+=======
+*bin.gz
+>>>>>>> 39d3d31f44c8557e17d4f581488487c841a8142d
