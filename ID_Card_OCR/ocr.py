@@ -57,10 +57,6 @@ def extract_aadhar_details(image):
             gender = "Female"
             break
 
-    # -------------------------
-    # Name Extraction Logic
-    # -------------------------
-
     stop_words = [
         "government",
         "india",
@@ -124,10 +120,6 @@ def extract_aadhar_details(image):
             if is_valid_name(text):
                 name = text
                 break
-
-    # -------------------------
-    # JSON Output
-    # -------------------------
 
     data = {
         "name": name,
