@@ -8,3 +8,17 @@ numpy
 pandas
 Pillow
 easyocr
+pandas
+numpy
+nltk
+spacy
+textblob
+vaderSentiment
+transformers
+transformers
+torch
+datasets
+matplotlib
+seaborn
+plotly
+
