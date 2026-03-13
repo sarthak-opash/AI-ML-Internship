@@ -4,7 +4,7 @@ tf_env/
 tf_env_cnn/
 venv/
 tf_env_py310/
-.env/
+*.env/
 .venv/
 
 
