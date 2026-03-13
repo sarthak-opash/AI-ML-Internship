@@ -1,5 +1,8 @@
 import os
+from dotenv import load_dotenv
 from transformers import pipeline
+
+load_dotenv()
 
 hf_token = os.getenv("HF_TOKEN")
 
