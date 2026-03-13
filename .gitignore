@@ -6,6 +6,7 @@ venv/
 tf_env_py310/
 env/
 .venv/
+.env/
 
 # Python cache
 __pycache__/
