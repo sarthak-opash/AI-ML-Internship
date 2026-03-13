@@ -21,4 +21,4 @@ datasets
 matplotlib
 seaborn
 plotly
-
+dotenv
