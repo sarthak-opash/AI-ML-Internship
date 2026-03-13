@@ -4,9 +4,9 @@ tf_env/
 tf_env_cnn/
 venv/
 tf_env_py310/
-env/
-.venv/
 .env/
+.venv/
+
 
 # Python cache
 __pycache__/
@@ -51,3 +51,7 @@ datasets/
 =======
 *bin.gz
 >>>>>>> 39d3d31f44c8557e17d4f581488487c841a8142d
+
+
+
+.env /

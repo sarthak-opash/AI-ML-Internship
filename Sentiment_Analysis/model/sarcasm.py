@@ -1,11 +1,12 @@
 import os
 from transformers import pipeline
 
-# os.environ["HF_TOKEN"] = "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"
+hf_token = os.getenv("HF_TOKEN")
 
 sarcasm_classifier = pipeline(
     "text-classification",
     model="cardiffnlp/twitter-roberta-base-irony",
+    token=hf_token,
     device=-1
 )
 
