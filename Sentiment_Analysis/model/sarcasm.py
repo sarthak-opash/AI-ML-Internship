@@ -1,7 +1,7 @@
 import os
 from transformers import pipeline
 
-os.environ["HF_TOKEN"] = "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"
+# os.environ["HF_TOKEN"] = "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"
 
 sarcasm_classifier = pipeline(
     "text-classification",
@@ -13,7 +13,7 @@ THRESHOLD = 0.80
 
 def detect_sarcasm(text):
 
-    if len(text.split()) < 4:
+    if len(text.split()) < 3:
         return False, 0
 
     result = sarcasm_classifier(text)[0]
