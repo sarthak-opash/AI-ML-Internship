@@ -30,6 +30,7 @@ datasets/
 *.png
 *.jpg
 *.jpeg
+.JPG
 
 *.mp4
 =======
