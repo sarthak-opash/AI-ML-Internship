@@ -1,8 +1,9 @@
 import cv2
 import pickle
-from sklearn.metrics.pairwise import cosine_distances
-from utils.embedding_utils import get_face_embedding
+from tkinter import filedialog
 from utils.csv_utils import mark_attendance
+from utils.embedding_utils import get_face_embedding
+from sklearn.metrics.pairwise import cosine_distances
 
 with open("embeddings/face_embeddings.pkl", "rb") as f:
     known_faces = pickle.load(f)

@@ -1,3 +1,5 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:abdeba8b1253f8faaa3d047ba7523efa28af4464dd81bf66c8a9042a81d5e2ff
-size 173
+Emp_ID,Name,Date,In,Out,Total Time
+e002,Virat,09-03-26,10:07:38,10:08:35,0:00:57
+e001,Dhoni,09-03-26,10:08:20,None,None
+e005,Andrew Garfield,09-03-26,10:08:55,None,None
+e001,Dhoni,20-03-26,15:15:20,None,None

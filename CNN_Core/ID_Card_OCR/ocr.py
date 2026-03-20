@@ -75,7 +75,13 @@ def extract_aadhar_details(image):
 
     def is_valid_name(text):
 
-        if len(text) < 3:
+        text = text.strip()
+        if len(text) < 4:
+            return False
+        if not text or not text[0].isupper():
+            return False
+        reject_garbage = {"yok", "YOK", "yol", "YOL", "bok", "BOK", "yoy", "voy"}
+        if text.upper().strip() in reject_garbage:
             return False
 
         if re.search(r'\d', text):
@@ -87,17 +93,22 @@ def extract_aadhar_details(image):
         if not re.match(r'^[A-Za-z ]+$', text):
             return False
 
+        # Prefer reasonable names: multi-word or sufficiently long
+        words = [w for w in text.split() if w]
+        if len(words) == 1 and len(text) < 6:
+            return False
+
         return True
 
     name = None
     target_index = None
 
-    # Find index of DOB or Gender
+    # Find index of DOB, Gender or NAME label (search above it)
     for i, text in enumerate(text_list):
 
         lower = text.lower()
 
-        if "male" in lower or "female" in lower:
+        if any(kw in lower for kw in ["male", "female", "name"]):
             target_index = i
             break
 
@@ -105,10 +116,11 @@ def extract_aadhar_details(image):
             target_index = i
             break
 
-    # Look above DOB/Gender
+    # Look above target (limited to 5 positions)
     if target_index is not None:
 
-        for j in range(target_index - 1, -1, -1):
+        search_start = max(0, target_index - 5)
+        for j in range(target_index - 1, search_start - 1, -1):
 
             candidate = text_list[j]
 
@@ -116,18 +128,18 @@ def extract_aadhar_details(image):
                 name = candidate
                 break
 
-    # Fallback method
+    # Improved fallback: score-based selection
     if not name:
 
-        for text in text_list:
-
+        candidates = []
+        for idx, text in enumerate(text_list):
             if is_valid_name(text):
-                name = text
-                break
-
-    # -------------------------
-    # JSON Output
-    # -------------------------
+                words_cnt = len([w for w in text.split() if w])
+                score = (words_cnt * 15) + len(text) - (idx * 0.5)
+                candidates.append((score, text))
+        if candidates:
+            candidates.sort(reverse=True)
+            name = candidates[0][1]
 
     data = {
         "name": name,
@@ -137,3 +149,4 @@ def extract_aadhar_details(image):
     }
 
     return json.dumps(data, indent=4)
+

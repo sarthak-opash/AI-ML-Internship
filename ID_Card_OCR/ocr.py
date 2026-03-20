@@ -81,7 +81,7 @@ def extract_aadhar_details(image):
         if not text or not text[0].isupper():
             return False
         reject_garbage = {"yok", "YOK", "yol", "YOL", "bok", "BOK", "yoy", "voy"}
-        if text.upper() in reject_garbage:
+        if text.upper().strip() in reject_garbage:
             return False
 
         if re.search(r'\d', text):
@@ -103,7 +103,7 @@ def extract_aadhar_details(image):
     name = None
     target_index = None
 
-    # Find index of DOB, Gender or NAME label (search above label)
+    # Find index of DOB, Gender or NAME label (search above it)
     for i, text in enumerate(text_list):
 
         lower = text.lower()
@@ -116,7 +116,7 @@ def extract_aadhar_details(image):
             target_index = i
             break
 
-    # Look above DOB/Gender/NAME (limited to recent 5 texts to avoid wrong matches)
+    # Look above target (limited to 5 positions)
     if target_index is not None:
 
         search_start = max(0, target_index - 5)
@@ -128,7 +128,7 @@ def extract_aadhar_details(image):
                 name = candidate
                 break
 
-    # Improved fallback: pick highest scoring valid name
+    # Improved fallback: score-based selection
     if not name:
 
         candidates = []

@@ -1,14 +1,15 @@
 import cv2
 import pickle
 import numpy as np
-from sklearn.metrics.pairwise import cosine_distances
-from utils.embedding_utils import get_face_embedding
 from utils.csv_utils import mark_attendance
+from utils.embedding_utils import get_face_embedding
+from sklearn.metrics.pairwise import cosine_distances
 
 with open("embeddings/face_embeddings.pkl", "rb") as f:
     known_faces = pickle.load(f)
 
-cap = cv2.VideoCapture('http://127.0.0.1')
+# cap = cv2.VideoCapture('http://127.0.0.1')
+cap = cv2.VideoCapture(0)
 
 while True:
     ret, frame = cap.read()
