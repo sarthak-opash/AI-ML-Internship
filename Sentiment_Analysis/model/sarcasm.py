@@ -1,0 +1,31 @@
+import os
+from dotenv import load_dotenv
+from transformers import pipeline
+
+load_dotenv()
+
+hf_token = os.getenv("HF_TOKEN")
+
+sarcasm_classifier = pipeline(
+    "text-classification",
+    model="cardiffnlp/twitter-roberta-base-irony",
+    token=hf_token,
+    device=-1
+)
+
+THRESHOLD = 0.80
+
+def detect_sarcasm(text):
+
+    if len(text.split()) < 3:
+        return False, 0
+
+    result = sarcasm_classifier(text)[0]
+
+    label = result["label"]
+    score = result["score"]
+
+    if label.lower() == "irony" and score > THRESHOLD:
+        return True, score
+    else:
+        return False, score

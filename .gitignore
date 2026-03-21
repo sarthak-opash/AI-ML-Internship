@@ -4,8 +4,9 @@ tf_env/
 tf_env_cnn/
 venv/
 tf_env_py310/
-env/
+*.env
 .venv/
+
 
 # Python cache
 __pycache__/
@@ -18,11 +19,43 @@ __pycache__/
 .DS_Store
 Thumbs.db
 
+*.bin.gz
+*.bin
 *.tar.gz
 datasets/
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+*.png
+*.jpg
+*.jpeg
+.JPG
+
+*.mp4
+=======
+=======
+>>>>>>> 39d3d31f44c8557e17d4f581488487c841a8142d
+=======
+>>>>>>> 39d3d31f44c8557e17d4f581488487c841a8142d
+>>>>>>> 399e3f0c5668f9f3a70e0f056f00fabada08eb84
 # images
 .jpg
 .png
 
+<<<<<<< HEAD
 *bin.gz
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+*bin.gz
+>>>>>>> 39d3d31f44c8557e17d4f581488487c841a8142d
+=======
+*bin.gz
+>>>>>>> 39d3d31f44c8557e17d4f581488487c841a8142d
+=======
+*bin.gz
+>>>>>>> 39d3d31f44c8557e17d4f581488487c841a8142d
+>>>>>>> 399e3f0c5668f9f3a70e0f056f00fabada08eb84

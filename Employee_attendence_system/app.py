@@ -1,13 +1,14 @@
-import streamlit as st
+import os
+import csv
 import cv2
 import pickle
 import numpy as np
 import pandas as pd
-import os
-from sklearn.metrics.pairwise import cosine_distances
-from utils.embedding_utils import get_face_embedding
-from utils.csv_utils import mark_attendance
+import streamlit as st
 from datetime import datetime
+from utils.embedding_utils import get_face_embedding
+from utils.csv_utils import CSV_FILE, mark_attendance
+from sklearn.metrics.pairwise import cosine_distances
 
 st.set_page_config(page_title="Employee Attendance System", layout="wide")
 
@@ -66,24 +67,24 @@ if menu == "Take Attendance":
 
                 best_dist, emp_id, emp_name = min(distances)
 
-                # today = datetime.now().strftime("%d-%m-%y")
-                # time_out = datetime.now().strftime("%H:%M:%S")
+                today = datetime.now().strftime("%d-%m-%y")
+                time_out = datetime.now().strftime("%H:%M:%S")
 
-                # if os.path.isfile(CSV_FILE):
-                #     with open(CSV_FILE, "r", newline="") as f:
-                #         reader = list(csv.reader(f))
-                #         rows = reader[1:] if reader else []
+                if os.path.isfile(CSV_FILE):
+                    with open(CSV_FILE, "r", newline="") as f:
+                        reader = list(csv.reader(f))
+                        rows = reader[1:] if reader else []
 
-                # found = False
-                # for row in rows:
-                #     if len(row) >= 3 and str(row[0]) == str(emp_id) and row[2] == today:
-                #         found = True
-                #         # if row[4] == "None":
-                #         #     row[4] = time_out
-                #         #     row[5] = calculate_total_time(row[3], row[4])
-                #         if row[4] == time_out:
-                #              st.warning(f"Attendance already marked for {emp_name} today")
-                #         break
+                found = False
+                for row in rows:
+                    if len(row) >= 3 and str(row[0]) == str(emp_id) and row[2] == today:
+                        found = True
+                        # if row[4] == "None":
+                        #     row[4] = time_out
+                        #     row[5] = calculate_total_time(row[3], row[4])
+                        if row[4] == time_out:
+                             st.warning(f"Attendance already marked for {emp_name} today")
+                        break
 
                 if best_dist < 0.5:
                     mark_attendance(emp_id, emp_name)

@@ -16,5 +16,10 @@
         "**/.DS_Store": true,
         "**/Thumbs.db": true
     },
+<<<<<<< HEAD
     "hide-files.files": []
+=======
+    "hide-files.files": [],
+    "python-envs.defaultEnvManager": "ms-python.python:venv"
+>>>>>>> 399e3f0c5668f9f3a70e0f056f00fabada08eb84
 }
