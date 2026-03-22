@@ -41,14 +41,14 @@ if menu == "About Project":
     
     ### Libraries & Technologies Used:
     - **Streamlit**: To build this interactive web interface.
-    - **OpenCV (cv2)**: For webcam access.
+    - **OpenCV**: For webcam access.
     - **Scikit-Learn**: Specifically `cosine_distances` to compare face embeddings.
-    - **Pickle & Python CSV**: For storing pre-computed face embeddings and logging daily attendance data.
+    - **Pickle & Python CSV**: For storing pre-computed face embeddings and daily attendance data.
     
     ### How it Works:
     1. Pre-registered employee photos are converted to dense numerical representations (embeddings).
     2. Using either an **Uploaded Image** or the **Webcam**, an employee's face is detected and their live embedding is generated.
-    3. The generated embedding is compared against the database. If the distance metric strongly indicates a match, attendance is logged with a timestamp automatically.
+    3. The generated embedding is compared against the pkl model. If the distance metric strongly indicates a match, attendance is marked with the time stamp.
     """)
 
 elif menu == "Take Attendance":
