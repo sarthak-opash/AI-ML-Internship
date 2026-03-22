@@ -45,14 +45,15 @@ def extract_aadhar_details(image):
 
     # Gender Extraction
     gender = None
-    for text in text_list:
-        lower = text.lower()
-        if "male" in lower:
-            gender = "Male"
-            break
-        if "female" in lower:
-            gender = "Female"
-            break
+    full_text_lower = full_text.lower()
+    if re.search(r'\b(female|femal|femaie|femle)\b', full_text_lower):
+        gender = "Female"
+    elif re.search(r'\b(male|maie|nale)\b', full_text_lower):
+        gender = "Male"
+    elif "female" in full_text_lower:
+        gender = "Female"
+    elif "male" in full_text_lower:
+        gender = "Male"
 
     # Name Extraction Logic
     stop_words = [
@@ -121,32 +122,3 @@ def extract_aadhar_details(image):
     }
 
     return json.dumps(data, indent=4)
-
-            candidate = text_list[j]
-
-            if is_valid_name(candidate):
-                name = candidate
-                break
-
-    # Improved fallback: score-based selection
-    if not name:
-
-        candidates = []
-        for idx, text in enumerate(text_list):
-            if is_valid_name(text):
-                words_cnt = len([w for w in text.split() if w])
-                score = (words_cnt * 15) + len(text) - (idx * 0.5)
-                candidates.append((score, text))
-        if candidates:
-            candidates.sort(reverse=True)
-            name = candidates[0][1]
-
-    data = {
-        "name": name,
-        "date_of_birth": dob,
-        "gender": gender,
-        "aadhaar_number": aadhar_number
-    }
-
-    return json.dumps(data, indent=4)
-

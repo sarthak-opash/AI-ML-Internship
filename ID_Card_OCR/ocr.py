@@ -121,4 +121,3 @@ def extract_aadhar_details(image):
     }
 
     return json.dumps(data, indent=4)
-

@@ -31,11 +31,27 @@ known_faces = load_embeddings()
 
 menu = st.sidebar.selectbox(
     "Navigation",
-    ["Take Attendance", "View Attendance Records"]
+    ["About Project", "Take Attendance", "View Attendance Records"]
 )
 
+if menu == "About Project":
+    st.header("About Project")
+    st.markdown("""
+    **Employee Attendance System**
+    
+    ### Libraries & Technologies Used:
+    - **Streamlit**: To build this interactive web interface.
+    - **OpenCV (cv2)**: For webcam access.
+    - **Scikit-Learn**: Specifically `cosine_distances` to compare face embeddings.
+    - **Pickle & Python CSV**: For storing pre-computed face embeddings and logging daily attendance data.
+    
+    ### How it Works:
+    1. Pre-registered employee photos are converted to dense numerical representations (embeddings).
+    2. Using either an **Uploaded Image** or the **Webcam**, an employee's face is detected and their live embedding is generated.
+    3. The generated embedding is compared against the database. If the distance metric strongly indicates a match, attendance is logged with a timestamp automatically.
+    """)
 
-if menu == "Take Attendance":
+elif menu == "Take Attendance":
 
     option = st.radio(
         "Choose Attendance Method:",
