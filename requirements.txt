@@ -22,3 +22,10 @@ matplotlib
 seaborn
 plotly
 dotenv
+torch
+transformers
+sentencepiece
+AutoTokenizer
+AutoModelForSeq2SeqLM
+pyperclip
+soundfile
