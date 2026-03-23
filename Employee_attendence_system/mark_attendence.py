@@ -27,7 +27,7 @@ if file_path:
 
     best_dist, emp_id, emp_name = min(distances)
 
-    if best_dist < 0.5:
+    if best_dist < 0.7:
         mark_attendance(emp_id, emp_name)
         print(f"Attendance Marked for {emp_name}")
     else:
