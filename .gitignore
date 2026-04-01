@@ -6,6 +6,7 @@ venv/
 tf_env_py310/
 *.env
 .venv/
+AirLLm/
 myenv/
 
 
