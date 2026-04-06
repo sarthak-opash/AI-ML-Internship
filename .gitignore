@@ -8,6 +8,7 @@ tf_env_py310/
 .venv/
 AirLLm/
 myenv/
+langchain_env/
 
 
 # Python cache
