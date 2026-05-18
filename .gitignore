@@ -9,7 +9,8 @@ tf_env_py310/
 AirLLm/
 myenv/
 langchain_env/
-
+ocr
+paddleocr_env
 
 # Python cache
 __pycache__/
@@ -62,3 +63,6 @@ datasets/
 *bin.gz
 >>>>>>> 39d3d31f44c8557e17d4f581488487c841a8142d
 >>>>>>> 399e3f0c5668f9f3a70e0f056f00fabada08eb84
+
+
+ml-flow/
