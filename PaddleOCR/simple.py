@@ -27,10 +27,7 @@ for line in result[0]:
             2
         )
 
-    cv2.putText(
-        image,
-        f"{text} ({score:.2f})",
-        points[0],
+    cv2.putText(image, f"{text} ({score:.2f})", points[0],
         cv2.FONT_HERSHEY_SIMPLEX,
         0.6,
         (255, 0, 0),
